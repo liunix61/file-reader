@@ -46,14 +46,32 @@ def print_file_content(filename, lcd, delay=0.2):
         print(f"Total lines: {total_lines}, Total characters: {total_chars}, File: {filename}")
         
         while True:
+            based_message(lcd, "start")
             for line in lines:
                 lcd.clear()
                 lcd.print(line.strip(), 0, delay)
                 time.sleep(1)
-    except FileNotFoundError as fnf_error:
-        print(f"FileNotFoundError: {fnf_error}")
+            based_message(lcd, "end")
+    except OSError as os_error:
+        print(f"OSError: {os_error}")
     except Exception as error:
         print(f"Exception: {error}")
+
+def based_message(lcd, position):
+    current_time = time.localtime()
+    current_hour = current_time[3]
+    if 5 <= current_hour < 12:
+        message = "Good morning, have a nice day"
+    elif 12 <= current_hour < 18:
+        message = "Good afternoon, have a nice day"
+    elif 18 <= current_hour < 22:
+        message = "Good evening, have a nice day"
+    else:
+        message = "Good night, have a nice day"
+    
+    lcd.clear()
+    lcd.print(message, 0)
+    time.sleep(2)
 
 def main():
     try:
@@ -64,3 +82,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
