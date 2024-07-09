@@ -43,8 +43,10 @@ def print_file_content(filename, lcd, delay=0.2):
     read_func = get_reader_function(filename)
     try:
         lines, total_lines, total_chars = read_func(filename)
-        print(f"Total lines: {total_lines}, Total characters: {total_chars}, File: {filename}")
-        
+        print(f"Total lines: {total_lines}, ")
+        print(f"Total characters: {total_chars}, ")
+        print(f"File: {filename}")
+
         while True:
             based_message(lcd, "start")
             for line in lines:
@@ -71,7 +73,8 @@ def based_message(lcd, position):
     
     lcd.clear()
     lcd.print(message, 0)
-    time.sleep(2)
+    print(f"{position} message: {message}")
+    time.sleep(1)
 
 def main():
     try:
