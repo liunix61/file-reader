@@ -1,6 +1,3 @@
-The quick brown fox jumps over the lazy dog
-The quick brown fox jumps over the lazy dog
-Tst
-?
-Lorem Ipsum is simply dummy text of the printing and typesetting industry
-Yes
+Hi.
+How are you feeling right now?
+Can u read this?
